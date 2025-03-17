@@ -31,51 +31,78 @@ Write your own steps
 ### Name: 
 ### Register Number:
 
+### Name: AALIYA FATHIMA M
+### Register Number: 212223230001
+
 ```python
 class PeopleClassifier(nn.Module):
     def __init__(self, input_size):
         super(PeopleClassifier, self).__init__()
-        #Include your code here
+        self.fc1 = nn.Linear(input_size,32)
+        self.fc2 = nn.Linear(32,16)
+        self.fc3 = nn.Linear(16,8)
+        self.fc4 = nn.Linear(8,4)
 
-
-
-    def forward(self, x):
-        #Include your code here
-        
-
+    def forward(self,x):
+      x = F.relu(self.fc1(x))
+      x = F.relu(self.fc2(x))
+      x = F.relu(self.fc3(x))
+      x = self.fc4(x)
+      return x
 ```
 ```python
 # Initialize the Model, Loss Function, and Optimizer
+model = PeopleClassifier(input_size=X_train.shape[1])
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.Adam(model.parameters(),lr=0.01)
 
+def train_model(model, train_loader,criterion,optimizer,epochs):
+  for epoch in range(epochs):
+    model.train()
+    for X_batch, y_batch in train_loader:
+      optimizer.zero_grad()
+      output = model(X_batch)
+      loss = criterion(output,y_batch)
+      loss.backward()
+      optimizer.step()
 
+    if (epoch + 1) % 10 == 0:
+      print(f"Epoch {epoch+1}/{epochs}, Loss: {loss.item():.4f}")
 ```
 ```python
-def train_model(model, train_loader, criterion, optimizer, epochs):
-    #Include your code here
+def train_model(model, train_loader,criterion,optimizer,epochs):
+  for epoch in range(epochs):
+    model.train()
+    for X_batch, y_batch in train_loader:
+      optimizer.zero_grad()
+      output = model(X_batch)
+      loss = criterion(output,y_batch)
+      loss.backward()
+      optimizer.step()
+
+    if (epoch + 1) % 10 == 0:
+      print(f"Epoch {epoch+1}/{epochs}, Loss: {loss.item():.4f}")
 ```
-
-
 
 ## Dataset Information
 
-Include screenshot of the dataset
+![DATASET DL EXP 2](https://github.com/user-attachments/assets/fb878a76-8802-4f57-806c-d47828e46b8e)
+
 
 ## OUTPUT
-
-
-
 ### Confusion Matrix
 
-Include confusion matrix here
+![Screenshot 2025-03-17 085226](https://github.com/user-attachments/assets/17393f08-e03c-4977-a1e9-140de17481bd)
+
 
 ### Classification Report
 
-Include Classification Report here
+![Screenshot 2025-03-17 085246](https://github.com/user-attachments/assets/97d9fe36-8c15-439a-b36a-4b77377a20c8)
 
 
 ### New Sample Data Prediction
 
-Include your sample input and output here
+![Screenshot 2025-03-17 085235](https://github.com/user-attachments/assets/f3b6e073-d3a9-4836-8c51-8cd8e89c1eb2)
 
 ## RESULT
 Include your result here
