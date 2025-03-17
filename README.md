@@ -14,22 +14,32 @@ You are required to help the manager to predict the right group of the new custo
 
 ## Neural Network Model
 
-Include the neural network model diagram.
+![NEURAL MODEL](https://github.com/user-attachments/assets/1e57d1d9-f50a-4e69-9820-7eb3d06a5cbc)
+
 
 ## DESIGN STEPS
 
 ### STEP 1:
-Write your own steps
+Data Preprocessing: Clean, normalize, and split data into training, validation, and test sets.
 
 ### STEP 2:
+Model Design:
 
+Input Layer: Number of neurons = features.
+Hidden Layers: 2 layers with ReLU activation.
+Output Layer: 4 neurons (segments A, B, C, D) with softmax activation.
 ### STEP 3:
+Model Compilation: Use categorical crossentropy loss, Adam optimizer, and track accuracy.
 
+### STEP 4:
+Training: Train with early stopping, batch size (e.g., 32), and suitable epochs.
 
+### STEP 5:
+Model Compilation: Use categorical crossentropy loss, Adam optimizer, and track accuracy.
+
+### STEP 6:
+Training: Train with early stopping, batch size (e.g., 32), and suitable epochs.
 ## PROGRAM
-
-### Name: 
-### Register Number:
 
 ### Name: AALIYA FATHIMA M
 ### Register Number: 212223230001
@@ -105,4 +115,4 @@ def train_model(model, train_loader,criterion,optimizer,epochs):
 ![Screenshot 2025-03-17 085235](https://github.com/user-attachments/assets/f3b6e073-d3a9-4836-8c51-8cd8e89c1eb2)
 
 ## RESULT
-Include your result here
+So, To develop a neural network classification model for the given dataset is executed successfully.
